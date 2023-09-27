@@ -68,7 +68,7 @@ def lambda_handler(event, context):
     
 
     file_loc ="/tmp/"
-    file_name = "fhv_datafile"  
+    file_name = "fhv_datafile.csv"  
     #file_name = "C:\\Users\\Naga\\Downloads\\BezosAcademy\\ForHireVehicles\\FetchData\\fhv_data.csv"
     data = json.loads(fhv_urlresponse.data.decode("utf8")) 
 
@@ -88,5 +88,5 @@ def lambda_handler(event, context):
             + dt_now.strftime("%M")
             + "/"
         )
-    s3_client.upload_file(file_loc+file_name, S3_BUCKET, file_name + file_timestamp) 
+    s3_client.upload_file(file_loc+file_name, S3_BUCKET, file_timestamp+file_name) 
     
